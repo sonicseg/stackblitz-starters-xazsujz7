@@ -1,8 +1,7 @@
 import { getWagmiConnectors } from "./wagmiConnectors";
-import { Chain, createClient, fallback, http } from "viem";
+import { createClient, http } from "viem";
 import { createConfig } from "wagmi";
-import scaffoldConfig, { DEFAULT_ALCHEMY_API_KEY, ScaffoldConfig } from "~~/scaffold.config";
-import { getAlchemyHttpUrl } from "~~/utils/scaffold-eth";
+import scaffoldConfig from "~~/scaffold.config";
 
 const { targetNetworks } = scaffoldConfig;
 
@@ -19,22 +18,10 @@ export const getWagmiConfig = () => {
       connectors: getWagmiConnectors(),
       ssr: true,
       client: ({ chain }) => {
-        let rpcFallbacks = [http()];
-        const rpcOverrideUrl = (scaffoldConfig.rpcOverrides as ScaffoldConfig["rpcOverrides"])?.[chain.id];
-        if (rpcOverrideUrl) {
-          // For Sonic testnet, use the configured RPC
-          rpcFallbacks = [http(rpcOverrideUrl)];
-        } else {
-          // Fallback to default RPC if no override
-          const alchemyHttpUrl = getAlchemyHttpUrl(chain.id);
-          if (alchemyHttpUrl) {
-            const isUsingDefaultKey = scaffoldConfig.alchemyApiKey === DEFAULT_ALCHEMY_API_KEY;
-            rpcFallbacks = isUsingDefaultKey ? [http(), http(alchemyHttpUrl)] : [http(alchemyHttpUrl), http()];
-          }
-        }
+        // For Sonic testnet, use direct RPC
         return createClient({
           chain,
-          transport: fallback(rpcFallbacks),
+          transport: http("https://rpc.testnet.soniclabs.com"),
           pollingInterval: scaffoldConfig.pollingInterval,
         });
       },

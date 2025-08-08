@@ -1,8 +1,7 @@
-import * as chains from "viem/chains";
 import { sonicTestnet } from "~~/utils/customChains";
 
 export type BaseConfig = {
-  targetNetworks: readonly chains.Chain[];
+  targetNetworks: readonly any[];
   pollingInterval: number;
   alchemyApiKey: string;
   rpcOverrides?: Record<number, string>;
@@ -21,11 +20,8 @@ const scaffoldConfig = {
   pollingInterval: 30000,
   // Alchemy API key (not used for Sonic testnet, but kept for compatibility)
   alchemyApiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY || DEFAULT_ALCHEMY_API_KEY,
-  // RPC override for Sonic testnet
-  rpcOverrides: {
-    // Sonic Testnet RPC
-    [57054]: "https://rpc.testnet.soniclabs.com",
-  },
+  // RPC overrides (not needed for Sonic as it's defined in the chain)
+  rpcOverrides: {},
   // This is ours WalletConnect's default project ID.
   // You can get your own at https://cloud.walletconnect.com
   // It's recommended to store it in an env variable:

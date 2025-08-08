@@ -2,6 +2,9 @@
   "name": "@se-2/nextjs",
   "version": "0.1.0",
   "private": true,
+  "overrides": {
+    "use-sync-external-store": "^1.2.2"
+  },
   "scripts": {
     "build": "next build",
     "check-types": "tsc --noEmit --incremental",

@@ -1,12 +1,10 @@
-import { defineChain } from "viem";
-
 /**
  * Sonic Testnet (Fantom Sonic)
  * Chain ID: 57054
  * 
  * Sonic is a next-generation L1 blockchain built by Fantom
  */
-export const sonicTestnet = defineChain({
+export const sonicTestnet = {
   id: 57054,
   name: "Sonic Testnet",
   nativeCurrency: {
@@ -29,10 +27,4 @@ export const sonicTestnet = defineChain({
     },
   },
   testnet: true,
-  contracts: {
-    multicall3: {
-      address: "0xcA11bde05977b3631167028862bE2a173976CA11",
-      blockCreated: 0,
-    },
-  },
-});
+} as const;
