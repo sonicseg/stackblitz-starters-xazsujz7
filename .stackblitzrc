@@ -1,6 +1,6 @@
 {
   "installDependencies": true,
-  "startCommand": "cd packages/nextjs && npx --yes next dev",
+  "startCommand": "rm -rf packages/nextjs/.next && cd packages/nextjs && yarn dev",
   "env": {
     "NODE_ENV": "development",
     "STACKBLITZ": "true",
