@@ -2,11 +2,10 @@ import { getWagmiConnectors } from "./wagmiConnectors";
 import { createClient, http } from "viem";
 import { createConfig } from "wagmi";
 import scaffoldConfig from "~~/scaffold.config";
-
-const { targetNetworks } = scaffoldConfig;
+import { sonicTestnet } from "~~/utils/customChains";
 
 // Using only Sonic testnet - no other chains
-export const enabledChains = targetNetworks;
+export const enabledChains = [sonicTestnet] as const;
 
 // Singleton instance of wagmiConfig
 let wagmiConfigInstance: ReturnType<typeof createConfig> | null = null;

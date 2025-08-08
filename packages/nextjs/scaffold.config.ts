@@ -1,7 +1,8 @@
+import { Chain } from "viem";
 import { sonicTestnet } from "~~/utils/customChains";
 
 export type BaseConfig = {
-  targetNetworks: readonly any[];
+  targetNetworks: readonly [Chain, ...Chain[]];
   pollingInterval: number;
   alchemyApiKey: string;
   rpcOverrides?: Record<number, string>;

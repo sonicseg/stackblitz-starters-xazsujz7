@@ -1,3 +1,5 @@
+import { Chain } from "viem";
+
 /**
  * Sonic Testnet (Fantom Sonic)
  * Chain ID: 57054
@@ -7,6 +9,7 @@
 export const sonicTestnet = {
   id: 57054,
   name: "Sonic Testnet",
+  network: "sonic-testnet",
   nativeCurrency: {
     decimals: 18,
     name: "Sonic",
@@ -27,4 +30,4 @@ export const sonicTestnet = {
     },
   },
   testnet: true,
-} as const;
+} as const satisfies Chain;
