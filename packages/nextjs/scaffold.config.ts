@@ -1,5 +1,5 @@
 import { Chain } from "viem";
-import { sonicTestnet } from "~~/utils/customChains";
+import { sonicTestnet } from "~~/chains/sonicTestnet";
 
 export type BaseConfig = {
   targetNetworks: readonly [Chain, ...Chain[]];

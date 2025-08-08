@@ -1,8 +1,8 @@
 import { getWagmiConnectors } from "./wagmiConnectors";
 import { createClient, http } from "viem";
 import { createConfig } from "wagmi";
+import { sonicTestnet } from "~~/chains/sonicTestnet";
 import scaffoldConfig from "~~/scaffold.config";
-import { sonicTestnet } from "~~/utils/customChains";
 
 // Using only Sonic testnet - no other chains
 export const enabledChains = [sonicTestnet] as const;
