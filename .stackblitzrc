@@ -1,6 +1,6 @@
 {
   "installDependencies": true,
-  "startCommand": "yarn install && cd packages/nextjs && npx next dev",
+  "startCommand": "cd packages/nextjs && node node_modules/next/dist/bin/next dev",
   "env": {
     "NODE_ENV": "development",
     "STACKBLITZ": "true",
