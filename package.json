@@ -43,6 +43,7 @@
     "next:serve": "cd packages/nextjs && yarn serve",
 
     "start": "cd packages/nextjs && yarn dev",
+    "start:stackblitz": "cd packages/nextjs && npx next dev",
     "dev": "cd packages/nextjs && yarn dev",
     "test": "cd packages/hardhat && yarn test",
     "vercel": "cd packages/nextjs && yarn vercel",

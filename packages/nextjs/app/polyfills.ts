@@ -1,11 +1,11 @@
 // StackBlitz-specific polyfills for Scaffold-ETH 2
 // These fixes are required for the app to run in StackBlitz environment
 
-if (typeof globalThis !== 'undefined') {
+if (typeof globalThis !== "undefined") {
   // 1. Fix for indexedDB not being available in StackBlitz
   if (!globalThis.indexedDB) {
     // @ts-ignore - Mock implementation for StackBlitz
-    globalThis.indexedDB = {
+    (globalThis as any).indexedDB = {
       open: () => {
         return {
           onsuccess: () => {},
@@ -41,9 +41,9 @@ if (typeof globalThis !== 'undefined') {
   }
 
   // 2. Fix for crypto.subtle in StackBlitz (sometimes missing)
-  if (typeof crypto !== 'undefined' && !crypto.subtle && typeof globalThis.crypto !== 'undefined') {
+  if (typeof crypto !== "undefined" && !crypto.subtle && typeof globalThis.crypto !== "undefined") {
     // @ts-ignore
-    globalThis.crypto.subtle = {
+    (globalThis.crypto as any).subtle = {
       digest: async () => new ArrayBuffer(0),
       generateKey: async () => null,
       importKey: async () => null,
