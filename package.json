@@ -42,7 +42,7 @@
     "next:lint": "cd packages/nextjs && yarn lint",
     "next:serve": "cd packages/nextjs && yarn serve",
     "precommit": "lint-staged",
-    "start": "cd packages/nextjs && yarn dev",
+    "start": "cd packages/nextjs && yarn dev --turbo",
     "dev": "cd packages/nextjs && yarn dev",
     "test": "cd packages/hardhat && yarn test",
     "vercel": "cd packages/nextjs && yarn vercel",
@@ -54,7 +54,6 @@
     "husky": "~9.1.6",
     "lint-staged": "~13.2.2"
   },
-  "packageManager": "yarn@3.2.3",
   "engines": {
     "node": ">=20.18.3"
   }
