@@ -33,7 +33,7 @@
     "hardhat:lint-staged": "cd packages/hardhat && yarn lint-staged",
     "hardhat:test": "cd packages/hardhat && yarn test",
     "hardhat:verify": "cd packages/hardhat && yarn verify",
-    "postinstall": "husky install",
+
     "ipfs": "cd packages/nextjs && yarn ipfs",
     "lint": "yarn next:lint && yarn hardhat:lint",
     "next:build": "cd packages/nextjs && yarn build",
@@ -41,8 +41,8 @@
     "next:format": "cd packages/nextjs && yarn format",
     "next:lint": "cd packages/nextjs && yarn lint",
     "next:serve": "cd packages/nextjs && yarn serve",
-    "precommit": "lint-staged",
-    "start": "cd packages/nextjs && yarn dev --turbo",
+
+    "start": "cd packages/nextjs && yarn dev",
     "dev": "cd packages/nextjs && yarn dev",
     "test": "cd packages/hardhat && yarn test",
     "vercel": "cd packages/nextjs && yarn vercel",
@@ -50,11 +50,8 @@
     "vercel:yolo": "cd packages/nextjs && yarn vercel:yolo",
     "verify": "cd packages/hardhat && yarn verify"
   },
-  "devDependencies": {
-    "husky": "~9.1.6",
-    "lint-staged": "~13.2.2"
-  },
+  "devDependencies": {},
   "engines": {
-    "node": ">=20.18.3"
+    "node": ">=18.0.0"
   }
 }

@@ -8,36 +8,41 @@ import {
   walletConnectWallet,
 } from "@rainbow-me/rainbowkit/wallets";
 import { rainbowkitBurnerWallet } from "burner-connector";
-import * as chains from "viem/chains";
 import scaffoldConfig from "~~/scaffold.config";
 
-const { onlyLocalBurnerWallet, targetNetworks } = scaffoldConfig;
-
-const wallets = [
-  metaMaskWallet,
-  walletConnectWallet,
-  ledgerWallet,
-  coinbaseWallet,
-  rainbowWallet,
-  safeWallet,
-  ...(!targetNetworks.some(network => network.id !== (chains.hardhat as chains.Chain).id) || !onlyLocalBurnerWallet
-    ? [rainbowkitBurnerWallet]
-    : []),
-];
+// Singleton instance of connectors
+let connectorsInstance: ReturnType<typeof connectorsForWallets> | null = null;
 
 /**
- * wagmi connectors for the wagmi context
+ * Get wagmi connectors for the wagmi context (singleton)
  */
-export const wagmiConnectors = connectorsForWallets(
-  [
-    {
-      groupName: "Supported Wallets",
-      wallets,
-    },
-  ],
+export const getWagmiConnectors = () => {
+  if (!connectorsInstance) {
+    const wallets = [
+      metaMaskWallet,
+      walletConnectWallet,
+      ledgerWallet,
+      coinbaseWallet,
+      rainbowWallet,
+      safeWallet,
+      rainbowkitBurnerWallet, // Always include burner wallet for Sonic testnet
+    ];
 
-  {
-    appName: "scaffold-eth-2",
-    projectId: scaffoldConfig.walletConnectProjectId,
-  },
-);
+    connectorsInstance = connectorsForWallets(
+      [
+        {
+          groupName: "Supported Wallets",
+          wallets,
+        },
+      ],
+      {
+        appName: "scaffold-eth-2",
+        projectId: scaffoldConfig.walletConnectProjectId,
+      },
+    );
+  }
+  return connectorsInstance;
+};
+
+// Export for backward compatibility
+export const wagmiConnectors = getWagmiConnectors();

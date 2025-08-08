@@ -1,11 +1,14 @@
-# 🏗 Scaffold-ETH 2
+# 🏗 Scaffold-ETH 2 - Sonic Testnet Edition
 
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
+  <a href="https://scaffoldeth.io">Website</a> |
+  <a href="https://testnet.soniclabs.com">Sonic Testnet Explorer</a>
 </h4>
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+🚀 **This version is configured exclusively for Sonic Testnet (Chain ID: 57054)**
+
+🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Sonic blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
 
 ⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
 
@@ -21,7 +24,7 @@
 
 Before you begin, you need to install the following tools:
 
-- [Node (>= v20.18.3)](https://nodejs.org/en/download/)
+- [Node (>= v18)](https://nodejs.org/en/download/)
 - Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
 - [Git](https://git-scm.com/downloads)
 
@@ -36,15 +39,9 @@ cd my-dapp-example
 yarn install
 ```
 
-2. Run a local network in the first terminal:
+2. Get Sonic Testnet tokens from the [faucet](https://testnet.soniclabs.com/faucet) for deploying contracts.
 
-```
-yarn chain
-```
-
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/hardhat/hardhat.config.ts`.
-
-3. On a second terminal, deploy the test contract:
+3. Deploy your contract to Sonic Testnet:
 
 ```
 yarn deploy
