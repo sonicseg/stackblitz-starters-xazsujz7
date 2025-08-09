@@ -34,38 +34,45 @@ export function DebugContracts() {
   return (
     <div className="flex flex-col gap-y-6 lg:gap-y-8 py-8 lg:py-12 justify-center items-center">
       {contractNames.length === 0 ? (
-        <p className="text-3xl mt-14">No contracts found!</p>
+        <div className="text-center py-20">
+          <p className="text-3xl text-gray-400 mb-4">No contracts found!</p>
+          <p className="text-gray-500">Deploy your contracts to see them here</p>
+        </div>
       ) : (
         <>
           {contractNames.length > 1 && (
             <div className="flex flex-row gap-2 w-full max-w-7xl pb-1 px-6 lg:px-10 flex-wrap">
               {contractNames.map(contractName => (
                 <button
-                  className={`btn btn-secondary btn-sm font-light hover:border-transparent ${
+                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
                     contractName === selectedContract
-                      ? "bg-base-300 hover:bg-base-300 no-animation"
-                      : "bg-base-100 hover:bg-secondary"
+                      ? "bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-400/50 text-purple-300"
+                      : "bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white"
                   }`}
                   key={contractName}
                   onClick={() => setSelectedContract(contractName)}
                 >
                   {contractName}
                   {(contractsData[contractName] as GenericContract)?.external && (
-                    <span className="tooltip tooltip-top tooltip-accent" data-tip="External contract">
-                      <BarsArrowUpIcon className="h-4 w-4 cursor-pointer" />
+                    <span className="ml-2 inline-flex items-center" title="External contract">
+                      <BarsArrowUpIcon className="h-4 w-4" />
                     </span>
                   )}
                 </button>
               ))}
             </div>
           )}
-          {contractNames.map(contractName => (
-            <ContractUI
-              key={contractName}
-              contractName={contractName}
-              className={contractName === selectedContract ? "" : "hidden"}
-            />
-          ))}
+          <div className="w-full max-w-7xl px-6 lg:px-10">
+            <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-white/5 p-6">
+              {contractNames.map(contractName => (
+                <ContractUI
+                  key={contractName}
+                  contractName={contractName}
+                  className={contractName === selectedContract ? "" : "hidden"}
+                />
+              ))}
+            </div>
+          </div>
         </>
       )}
     </div>
