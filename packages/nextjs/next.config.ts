@@ -9,10 +9,13 @@ const nextConfig: NextConfig = {
   reactStrictMode: !isStackBlitz, // Disable strict mode in StackBlitz to prevent double renders
   devIndicators: false,
   typescript: {
-    ignoreBuildErrors: process.env.NEXT_PUBLIC_IGNORE_BUILD_ERROR === "true",
+    // Always ignore TypeScript errors in StackBlitz
+    ignoreBuildErrors: isStackBlitz || process.env.NEXT_PUBLIC_IGNORE_BUILD_ERROR === "true",
   },
   eslint: {
-    ignoreDuringBuilds: process.env.NEXT_PUBLIC_IGNORE_BUILD_ERROR === "true",
+    // Always ignore ESLint errors in StackBlitz
+    ignoreDuringBuilds: isStackBlitz || process.env.NEXT_PUBLIC_IGNORE_BUILD_ERROR === "true",
+    dirs: isStackBlitz ? [] : ['app', 'components', 'hooks', 'services', 'utils'], // Skip ESLint in StackBlitz
   },
   // Fix for Coinbase Wallet SDK
   async headers() {

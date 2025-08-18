@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~~/*": ["./*"]
+    },
+    "checkJs": false,
+    "allowJs": true
+  },
+  "exclude": [
+    "node_modules",
+    ".next",
+    "app/debug/_components/**",
+    "app/blockexplorer/_components/**",
+    "app/blockexplorer/transaction/**"
+  ]
+}

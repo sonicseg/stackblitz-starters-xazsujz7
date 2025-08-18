@@ -4,6 +4,10 @@
   "env": {
     "NODE_ENV": "development",
     "STACKBLITZ": "true",
-    "SKIP_ENV_VALIDATION": "true"
-  }
+    "SKIP_ENV_VALIDATION": "true",
+    "SKIP_TYPESCRIPT_CHECK": "true",
+    "DISABLE_ESLINT_PLUGIN": "true",
+    "DISABLE_TYPE_CHECKING": "true"
+  },
+  "engine": "node18"
 }

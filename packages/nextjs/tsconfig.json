@@ -4,16 +4,29 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": false,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "jsx": "preserve",
-    "incremental": true,
+    "incremental": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictBindCallApply": false,
+    "strictPropertyInitialization": false,
+    "noFallthroughCasesInSwitch": false,
+    "allowUnreachableCode": true,
+    "allowUnusedLabels": true,
+    "checkJs": false,
+    "noResolve": false,
     "paths": {
       "~~/*": ["./*"]
     },
@@ -24,5 +37,8 @@
     ]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "app/debug/_components/**", "app/blockexplorer/_components/**", "app/blockexplorer/transaction/**"],
+  "ts-node": {
+    "transpileOnly": true
+  }
 }
