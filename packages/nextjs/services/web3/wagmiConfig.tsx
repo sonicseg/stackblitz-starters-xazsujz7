@@ -12,9 +12,14 @@ let wagmiConfigInstance: ReturnType<typeof createConfig> | null = null;
 
 export const getWagmiConfig = () => {
   if (!wagmiConfigInstance) {
+    // Get connectors - will be empty array on server side
+    const connectors = typeof getWagmiConnectors === 'function' 
+      ? getWagmiConnectors() 
+      : getWagmiConnectors as any;
+    
     wagmiConfigInstance = createConfig({
       chains: enabledChains,
-      connectors: getWagmiConnectors(),
+      connectors,
       ssr: true,
       client: ({ chain }) => {
         // For Sonic testnet, use direct RPC
@@ -29,5 +34,5 @@ export const getWagmiConfig = () => {
   return wagmiConfigInstance;
 };
 
-// Export for backward compatibility
+// Export for backward compatibility - will initialize on first use
 export const wagmiConfig = getWagmiConfig();

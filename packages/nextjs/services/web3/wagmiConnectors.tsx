@@ -17,6 +17,11 @@ let connectorsInstance: ReturnType<typeof connectorsForWallets> | null = null;
  * Get wagmi connectors for the wagmi context (singleton)
  */
 export const getWagmiConnectors = () => {
+  // Check if we're on the server side
+  if (typeof window === 'undefined') {
+    return [] as any; // Return empty array on server side
+  }
+  
   if (!connectorsInstance) {
     const wallets = [
       metaMaskWallet,
@@ -44,5 +49,5 @@ export const getWagmiConnectors = () => {
   return connectorsInstance;
 };
 
-// Export for backward compatibility
-export const wagmiConnectors = getWagmiConnectors();
+// Export for backward compatibility - will be empty on server, populated on client
+export const wagmiConnectors = typeof window !== 'undefined' ? getWagmiConnectors() : [] as any;
