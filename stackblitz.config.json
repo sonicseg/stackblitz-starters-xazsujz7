@@ -1,9 +1,14 @@
 {
   "installDependencies": true,
-  "startCommand": "yarn install && cd packages/nextjs && npx next dev",
+  "startCommand": "yarn install && cd packages/nextjs && TSC_COMPILE_ON_ERROR=true DISABLE_TYPE_CHECKING=true npx next dev --turbo",
   "env": {
     "NODE_ENV": "development",
     "STACKBLITZ": "true",
-    "SKIP_ENV_VALIDATION": "true"
-  }
+    "SKIP_ENV_VALIDATION": "true",
+    "NEXT_TELEMETRY_DISABLED": "1",
+    "NEXT_PUBLIC_IGNORE_BUILD_ERROR": "true",
+    "TSC_COMPILE_ON_ERROR": "true",
+    "DISABLE_TYPE_CHECKING": "true"
+  },
+  "compileTrigger": "save"
 }

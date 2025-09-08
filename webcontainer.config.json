@@ -1,7 +1,8 @@
 {
+  "disableTypeScriptServiceWorker": true,
   "installDependencies": true,
   "startCommand": "yarn install && cd packages/nextjs && npx next dev",
-  "env": {
-    "NODE_ENV": "development"
+  "turbo": {
+    "enabled": false
   }
 }

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "skipLibCheck": true,
+    "noEmit": true,
+    "paths": {
+      "*": ["packages/nextjs/*"]
+    }
+  },
+  "references": [
+    { "path": "./packages/nextjs" },
+    { "path": "./packages/hardhat" }
+  ],
+  "exclude": ["node_modules", "**/node_modules", "**/.next"]
+}

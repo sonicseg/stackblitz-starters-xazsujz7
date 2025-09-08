@@ -27,6 +27,7 @@
     "allowUnusedLabels": true,
     "checkJs": false,
     "noResolve": false,
+    "baseUrl": ".",
     "paths": {
       "~~/*": ["./*"]
     },
