@@ -24,18 +24,6 @@ export const HomeContent = () => {
             This is SPAWN
           </span>
         </h1>
-        
-        <p className="text-xl md:text-2xl text-gray-300 mb-12 font-light leading-relaxed">
-          Describe your idea in the text box and watch it come to life
-        </p>
-
-        {/* Subtle connection indicator */}
-        {connectedAddress && (
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-sm text-gray-400">Connected</span>
-          </div>
-        )}
       </div>
 
       {/* Bottom gradient fade */}
